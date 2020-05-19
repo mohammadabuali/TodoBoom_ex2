@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">TODOBoom</string>
     <string name="submit">Create</string>
+    <string name="are_you_sure_you_want_to_delete_this_todo_task">Are you sure you want to delete this todo task</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 </resources>

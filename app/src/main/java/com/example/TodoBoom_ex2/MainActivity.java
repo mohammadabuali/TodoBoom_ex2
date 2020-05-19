@@ -15,16 +15,17 @@ import com.example.TodoBoom_ex2.todo.TodoAdaptor;
 
 
 public class MainActivity extends AppCompatActivity {
-    public RecyclerView.Adapter adapter = new TodoAdaptor();
+    public TodoAdaptor adapter = new TodoAdaptor();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        MyApp app = (MyApp) getApplicationContext();
+        adapter.setArray(app);
         Button btn = (Button)findViewById(R.id.btn);
         EditText edt = (EditText) findViewById(R.id.edtTxt);
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
-
-        btn.setOnClickListener(new SimpleListner((TodoAdaptor)adapter, getApplicationContext(), edt));
+        btn.setOnClickListener(new SimpleListner((TodoAdaptor)adapter, app, edt));
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
 
@@ -50,7 +51,7 @@ class SimpleListner implements View.OnClickListener{
             return;
         }
 
-        adapter.addTask(txt);
+        adapter.addTask(txt, context);
         edt.getText().clear();
     }
 }
